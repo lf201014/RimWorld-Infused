@@ -286,7 +286,7 @@ namespace Infused
                 {
                     new DamageInfo(
                         onHitDef.damage,
-                        statValue,
+                        amount,
                         dinfo.ArmorPenetrationInt,
                         dinfo.Angle,
                         dinfo.Instigator,
