@@ -284,16 +284,21 @@ namespace Infused
 
                 if (amount > 0f && chance > 0f && Rand.Chance(chance))
                 {
-                    DamageInfo extra = new DamageInfo(
+                    new DamageInfo(
                         onHitDef.damage,
-                        amount,
+                        statValue,
                         dinfo.ArmorPenetrationInt,
                         dinfo.Angle,
                         dinfo.Instigator,
                         dinfo.HitPart,
                         dinfo.Weapon,
                         dinfo.Category,
-                        dinfo.IntendedTarget);
+                        dinfo.IntendedTarget,
+                        dinfo.InstigatorGuilty,
+                        dinfo.SpawnFilth,
+                        dinfo.WeaponQuality,
+                        dinfo.CheckForJobOverride,
+                        dinfo.PreventCascade);
 
                     thing.PreApplyDamage(ref extra, out bool absorbed);
                     if (absorbed)

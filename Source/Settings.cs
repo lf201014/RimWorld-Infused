@@ -23,7 +23,7 @@ namespace Infused
             list.IntAdjuster(ref max, 1, 1);
             list.NewColumn();
             list.ColumnWidth = rect.width - 84f;
-            list.Label(ResourceBank.Strings.SettingsMaxSlots + ": " + max, -1, ResourceBank.Strings.SettingsMaxSlotsDesc);
+            list.Label(new TaggedString(ResourceBank.Strings.SettingsMaxSlots + ": " + max), -1, ResourceBank.Strings.SettingsMaxSlotsDesc);
             list.End();
 
             rect.yMin = rect.y + list.CurHeight;
@@ -31,24 +31,24 @@ namespace Infused
             list.Begin(rect);
             list.ColumnWidth = rect.width;
             list.GapLine();
-            list.Label(ResourceBank.Strings.SettingsMultiplier + ": " + mult.ToString("0.00"), -1, ResourceBank.Strings.SettingsMultiplierDesc);
+            list.Label(new TaggedString(ResourceBank.Strings.SettingsMultiplier + ": " + mult.ToString("0.00")), -1, ResourceBank.Strings.SettingsMultiplierDesc);
             mult = list.Slider(mult, 0.05f, 4f);
-            list.Label(ResourceBank.Strings.SettingsBias + ": " + bias.ToString("0.00"), -1, ResourceBank.Strings.SettingsBiasDesc);
+            list.Label(new TaggedString(ResourceBank.Strings.SettingsBias + ": " + bias.ToString("0.00")), -1, ResourceBank.Strings.SettingsBiasDesc);
             bias = list.Slider(bias, 0.01f, 6f);
             list.GapLine();
-            list.Label(ResourceBank.Strings.SettingsTierCurve, -1, ResourceBank.Strings.SettingsTierCurveDesc);
+            list.Label(new TaggedString(ResourceBank.Strings.SettingsTierCurve), -1, ResourceBank.Strings.SettingsTierCurveDesc);
             list.End();
 
             rect.yMin = rect.y + list.CurHeight;
 
             list.Begin(rect);
             list.ColumnWidth = 75f;
-            list.Label(ResourceBank.Strings.Artifact);
-            list.Label(ResourceBank.Strings.Legendary);
-            list.Label(ResourceBank.Strings.Epic);
-            list.Label(ResourceBank.Strings.Rare);
-            list.Label(ResourceBank.Strings.Uncommon);
-            list.Label(ResourceBank.Strings.Common);
+            list.Label(new TaggedString(ResourceBank.Strings.Artifact), -1f, null);
+            list.Label(new TaggedString(ResourceBank.Strings.Legendary), -1f, null);
+            list.Label(new TaggedString(ResourceBank.Strings.Epic), -1f, null);
+            list.Label(new TaggedString(ResourceBank.Strings.Rare), -1f, null);
+            list.Label(new TaggedString(ResourceBank.Strings.Uncommon), -1f, null);
+            list.Label(new TaggedString(ResourceBank.Strings.Common), -1f, null);
             list.NewColumn();
             list.ColumnWidth = rect.width - 150f;
             weight_artifact = list.Slider(weight_artifact, 0f, 1f);
@@ -59,12 +59,12 @@ namespace Infused
             list.Slider(0.99f, 0f, 1f);
             list.NewColumn();
             list.ColumnWidth = 75f;
-            list.Label(weight_artifact.ToStringPercent());
-            list.Label(weight_legendary.ToStringPercent());
-            list.Label(weight_epic.ToStringPercent());
-            list.Label(weight_rare.ToStringPercent());
-            list.Label(weight_uncommon.ToStringPercent());
-            list.Label((1f).ToStringPercent());
+            list.Label(new TaggedString(weight_artifact.ToStringPercent()), -1f, null);
+            list.Label(new TaggedString(weight_legendary.ToStringPercent()), -1f, null);
+            list.Label(new TaggedString(weight_epic.ToStringPercent()), -1f, null);
+            list.Label(new TaggedString(weight_rare.ToStringPercent()), -1f, null);
+            list.Label(new TaggedString(weight_uncommon.ToStringPercent()), -1f, null);
+            list.Label(new TaggedString((1f).ToStringPercent()), -1f, null);
             list.End();
 
             rect.yMin = rect.y + list.CurHeight;
@@ -73,7 +73,7 @@ namespace Infused
             list.ColumnWidth = rect.width;
             list.GapLine();
             GUI.color = ResourceBank.Colors.Common;
-            list.Label(ResourceBank.Strings.SettingsExtra);
+            list.Label(new TaggedString(ResourceBank.Strings.SettingsExtra), -1f, null);
             GUI.color = Color.white;
             list.End();
         }
