@@ -6,7 +6,6 @@
     <label>reset infusion amplifier</label>
     <description>Reset infusion amplifier.</description>
     <jobString>Reseting infusion amplifier.</jobString>
-    <workerClass></workerClass>
     <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Cook</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>

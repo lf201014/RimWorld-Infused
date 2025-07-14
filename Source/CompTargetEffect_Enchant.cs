@@ -35,7 +35,10 @@ namespace Infused
                 }
             }
 
-            target.HitPoints = Mathf.FloorToInt(target.MaxHitPoints * hp);
+            // Use GetStatValue to force proper stat calculation with new infusions
+            int newMaxHitPoints = Mathf.RoundToInt(target.GetStatValue(StatDefOf.MaxHitPoints));
+            int newHitPoints = Mathf.FloorToInt(newMaxHitPoints * hp);
+            target.HitPoints = newHitPoints;
 
             infused.ThrowMote();
         }

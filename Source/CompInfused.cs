@@ -93,9 +93,12 @@ namespace Infused
         {
             if (props is CompProperties_Enchant infusedProps)
             {
+                // Store health percentage before infusion
                 #if DEBUG
                 Log.Message($"Infused :: {parent} will be infused");
                 #endif
+                float healthPercentage = (float)parent.HitPoints / parent.MaxHitPoints;
+                
                 // This is ONLY called when Infused is set in XML
                 infusions = InfusedMod.Infuse(
                     parent,
@@ -105,7 +108,12 @@ namespace Infused
                     skipThingFilter: true
                 ).ToList();
 
-                parent.HitPoints = parent.MaxHitPoints;
+                // Use GetStatValue to force proper stat calculation with new infusions
+                int newMaxHitPoints = Mathf.RoundToInt(parent.GetStatValue(StatDefOf.MaxHitPoints));
+                int newHitPoints = Mathf.FloorToInt(newMaxHitPoints * healthPercentage);
+                
+                // Maintain health percentage after infusion (which may have increased MaxHitPoints)
+                parent.HitPoints = newHitPoints;
             }
         }
 
