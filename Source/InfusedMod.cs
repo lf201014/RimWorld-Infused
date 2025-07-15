@@ -356,13 +356,21 @@ namespace Infused
         {
             var thing = __instance.parent;
 
+            // Store health percentage before infusion
+            float healthPercentage = (float)thing.HitPoints / thing.MaxHitPoints;
+
             // Can we be infused?
             var infusions = InfusedMod.Infuse(thing, q, max: Settings.max).ToList();
             if (infusions.Count > 0)
             {
                 thing.TryGetComp<CompInfused>()?.SetInfusions(infusions);
 
-                __instance.parent.HitPoints = __instance.parent.MaxHitPoints;
+                // Use GetStatValue to force proper stat calculation with new infusions
+                int newMaxHitPoints = Mathf.RoundToInt(thing.GetStatValue(StatDefOf.MaxHitPoints));
+                int newHitPoints = Mathf.FloorToInt(newMaxHitPoints * healthPercentage);
+                
+                // Maintain health percentage after infusion (which may have increased MaxHitPoints)
+                thing.HitPoints = newHitPoints;
             }
         }
     }
